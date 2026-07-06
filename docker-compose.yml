@@ -1,0 +1,23 @@
+services:
+  vaultkeeper:
+    build: .
+    container_name: vaultkeeper
+    restart: unless-stopped
+    ports:
+      - "5323:5323"
+    environment:
+      - PORT=5323
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-change-me-now}
+      - SECRET_KEY=${SECRET_KEY:?set SECRET_KEY in .env (64 hex chars)}
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASS=${SMTP_PASS:-}
+      - SMTP_FROM=${SMTP_FROM:-}
+    volumes:
+      - vaultkeeper-data:/app/data
+      - vaultkeeper-backups:/backups
+
+volumes:
+  vaultkeeper-data:
+  vaultkeeper-backups:

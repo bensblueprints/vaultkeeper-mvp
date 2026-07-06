@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-200 antialiased;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full border-2 border-zinc-950;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+input, select, textarea {
+  @apply outline-none;
+}
+
+pre.restore {
+  @apply text-xs leading-relaxed whitespace-pre-wrap break-all;
+}
