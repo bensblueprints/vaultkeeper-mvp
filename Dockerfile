@@ -4,6 +4,10 @@
 # apt-get line to only the engines you use if size matters.
 FROM node:20-bookworm-slim AS build
 WORKDIR /app
+# python3-setuptools: better-sqlite3 has no prebuilt binary for every Node
+# patch version, so it can fall back to compiling from source, which needs
+# a full toolchain including the distutils shim newer Python drops by default.
+RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-setuptools make g++ && rm -rf /var/lib/apt/lists/*
 COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 COPY . .
@@ -13,8 +17,10 @@ FROM node:20-bookworm-slim
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Engine CLIs: pg_dump, mysqldump, mongodump, sqlite3 + age encryption
+# Engine CLIs: pg_dump, mysqldump, mongodump, sqlite3 + age encryption, plus
+# python3-setuptools for better-sqlite3's native build fallback (see build stage).
 RUN apt-get update && apt-get install -y --no-install-recommends \
+      python3 python3-setuptools make g++ \
       postgresql-client \
       default-mysql-client \
       sqlite3 \
