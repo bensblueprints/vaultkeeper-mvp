@@ -57,7 +57,7 @@ Run it as a desktop app, or deploy to a $5 VPS when you need it public.
 
 Want the packaged, signed installer with everything pre-wired? Grab the one-time convenience version:
 
-**→ [https://whop.com/onetime-suite](https://whop.com/onetime-suite)**
+**→ [https://whop.com/benjisaiempire/vaultkeeper](https://whop.com/benjisaiempire/vaultkeeper)**
 
 Same code, zero setup, and it funds development.
 
