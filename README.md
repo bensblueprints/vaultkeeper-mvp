@@ -1,5 +1,9 @@
 # 🔐 Vaultkeeper
 
+## Demo
+
+VIDEO-PLACEHOLDER
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 
 **Scheduled, encrypted database backups you actually own.** Dump PostgreSQL, MySQL, SQLite and MongoDB on a cron schedule, compress + encrypt, ship to local disk / any S3-compatible bucket / FTP, prune by retention policy — and get alerted the moment a backup fails.
